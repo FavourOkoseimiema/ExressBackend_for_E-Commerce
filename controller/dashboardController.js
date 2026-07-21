@@ -1,5 +1,5 @@
 import Product from "../models/product.js";
-import Subscriber from "../models/Subscriber.js";
+import Subscriber from "../models/subscriber.js";
 
 export const getDashboardStats = async (req, res) => {
   try {
