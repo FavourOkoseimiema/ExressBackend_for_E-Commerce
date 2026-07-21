@@ -1,4 +1,4 @@
-import Subscriber from "../models/Subscriber.js";
+import Subscriber from "../models/subscriber.js";
 
 export const subscribe = async (req, res) => {
   try {
