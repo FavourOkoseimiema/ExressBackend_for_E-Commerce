@@ -35,14 +35,26 @@ export const registerUser = async (req, res) => {
       password: hashedPassword,
     });
 
-    res.status(201).json({
-      message: "Account created successfully.",
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-      },
-    });
+  // Generate JWT
+const token = jwt.sign(
+  {
+    id: user._id,
+  },
+  process.env.JWT_SECRET,
+  {
+    expiresIn: "7d",
+  }
+);
+
+res.status(201).json({
+  message: "Account created successfully.",
+  token,
+  user: {
+    id: user._id,
+    name: user.name,
+    email: user.email,
+  },
+});
 
   } catch (error) {
     console.error("Register error:", error);
